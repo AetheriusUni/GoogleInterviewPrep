@@ -27,15 +27,20 @@ class Linked_List:
         self.head = None
 
     def insert(self, val):
+        # if it's empty, assign the head
         if self.head == None:
             self.head = node(val)
+        # go through the linked list and put val at the end
         else:
             new_node = node(val)
             temp = self.head
+            # terminates when temp.next == None
             while(temp.next):
                 temp=temp.next
+            # this temp.next currently == None, so we assign the new node value to it
             temp.next = new_node
 
+# makes a n length linkedlist
 def createList(arr, n):
     lis = Linked_List()
     for i in range(n):
