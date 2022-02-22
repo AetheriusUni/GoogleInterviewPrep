@@ -31,6 +31,7 @@ class Linked_List:
         if self.head == None:
             self.head = node(val)
         # go through the linked list and put val at the end
+        # aka O(n) insert
         else:
             new_node = node(val)
             temp = self.head
