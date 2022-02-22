@@ -5,11 +5,14 @@ def isLengthEvenOrOdd(head):
     # Code here
     currentNode = head
     count = 0
+    # until we find the end of the linked list AKA currentNode = None
     while currentNode:
         currentNode = currentNode.next
         count+=1
+    # if even length return 0
     if count%2==0:
         return 0
+    # if odd length return 1
     else:
         return 1
 
