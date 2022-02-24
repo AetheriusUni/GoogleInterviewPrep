@@ -1,4 +1,5 @@
 # Priority Queue implementation in Python
+# max priority on top, so max heap
 
 
 # Function to heapify the tree
