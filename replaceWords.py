@@ -32,26 +32,46 @@ Every two consecutive words in sentence will be separated by exactly one space.
 sentence does not have leading or trailing spaces.
 """
 
+# function to do the word replacement
 def replaceWords(dictionary, sentence):
+    # use sets when you want to check if an item is contained within it
+    # use lists when you want to iterate over values
+    # therefore we use set because it allows us to check if a part of a word is in our set of roots
     rootset = set(dictionary)
     rString = ""
 
+    # for each word in our sentence
     for word in sentence:
+        # condition to check if we added a root to the return string already
+        # if a root is added already, we check the next word and set added to True
+        # if a root is not found, we add the entire word
         added = False
+        # for each of the possible roots of a word, from smallest to largest
         for i in range(1, len(word)):
+            # if a possible root is seen in the set of roots
             if word[:i] in rootset:
+                # append that root to the return string with a space after
                 rString+=f"{word[:i]} "
+                # set added to True to skip the addition of the entire word
                 added = True
+                # break to go to the next word
                 break
+        # if we didn't find a root to add
         if not added:
+            # add the entire word to our return string
             rString+=f"{word} "
-            added = False
-    return print(rString.strip())
+    # print our return string, but stripping away the extra space after the last word/root we output 
+    print(rString.strip())
 
     
-
+# Main Function
 if __name__ == "__main__":
+    # input dictionary of roots, not actually a dictionary though 
     dictionary = input().split()
-    dictionary = sorted(dictionary)
+    # sort the dictionary mainly by length, from least to greatest length
+    dictionary = sorted(dictionary, key=len)
+    print(dictionary)
+    # split up the input sentence into a list of words
     sentence = input().split()
+    # call the replaceWords function
     replaceWords(dictionary, sentence)
